@@ -1,0 +1,9 @@
+#! /bin/bash
+#https://www.tutorialspoint.com/unix/shell_scripting.htm
+if [ $# == 1 ]
+then
+git config --global user.email brunoenig@hotmail.com
+git add .
+git commit -m $1
+git push origin master
+fi
