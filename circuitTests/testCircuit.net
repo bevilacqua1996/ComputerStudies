@@ -6,7 +6,7 @@
 * Documentation at http://www.brorson.com/gEDA/SPICE/   *
 *********************************************************
 *==============  Begin SPICE netlist of main design ============
-v1 0 n0 SIN(0 10 1000Hz)
+v1 0 n0 SIN(0 10 100000Hz)
 .INCLUDE ./Simulation.cmd
 R1 0 n1 1k  
 C1 n0 n1 3.3nF  
