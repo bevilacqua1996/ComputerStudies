@@ -7,14 +7,10 @@ RTU Computer Studies Repository that will be used in order to upload codes which
 
 In python folder we can find many tests and scripts which can help with basics of the language and syntax and general. It is divided in some sub-directories:
 
-1. *basics_of_python*
-- First steps in the language
-2. *diaries*
-- Diaries of commands in *Idle*
-3. *list_exercises*
-- Practice with lists and functions and python
-4. *test_python*
-- Test done in class
+1. *basics_of_python* - First steps in the language
+2. *diaries* - Diaries of commands in *Idle*
+3. *list_exercises* - Practice with lists and functions and python
+4. *test_python* - Test done in class
 
 ### Circuit Simulation
 
@@ -44,4 +40,5 @@ One of the tests made until here is a comparision between number of *Covid-19* c
 You can check some results in the public notebook used to develop these studies. Link of dataset used to develop these studies can be found below too:
 
 [Covid-19 Data Analysis (Brazil and Latvia)](https://colab.research.google.com/drive/1Q1Lw2QAG9CylQ28k2Px7B3YrTXQouAXm)
+
 [Dataset Novel Corona Virus 2019](https://www.kaggle.com/sudalairajkumar/novel-corona-virus-2019-dataset/tasks?taskId=508)
