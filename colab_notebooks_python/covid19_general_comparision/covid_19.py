@@ -14,8 +14,9 @@ import matplotlib.pyplot as plt
 
 csv_covid_19 = pd.read_csv('./covid_19_data.csv')
 csv_covid_19.head()
-country1 = "Lithuania"
-country2 = "Latvia"
+country1 = input();
+country2 = input();
+country3 = input();
 
 csv_covid_19.describe()
 
@@ -25,9 +26,12 @@ covid_19_country1.head()
 covid_19_country2 = csv_covid_19.where(csv_covid_19["Country/Region"]==country2).sort_values(by='ObservationDate')
 covid_19_country2.head()
 
+covid_19_country3 = csv_covid_19.where(csv_covid_19["Country/Region"]==country3).sort_values(by='ObservationDate')
+covid_19_country3.head()
+
 list_dates = [];
 list_dates = csv_covid_19['ObservationDate']
-list_dates = list_country.drop_duplicates()
+list_dates = list_dates.drop_duplicates()
 
 list_final_date = [];
 
@@ -49,8 +53,11 @@ plot_graph_confirmed_cases(sbn.lineplot(x='ObservationDate', y='Confirmed', hue=
 plt.figure(figsize=(20,5))
 plot_graph_confirmed_cases(sbn.lineplot(x='ObservationDate', y='Confirmed', hue='Country/Region', marker='o', data=covid_19_country2), 'Confirmed Cases in ' + country2)
 
-covid_19_compare = csv_covid_19[(csv_covid_19['Country/Region']==country1) | (csv_covid_19['Country/Region']==country2)]
+plt.figure(figsize=(20,5))
+plot_graph_confirmed_cases(sbn.lineplot(x='ObservationDate', y='Confirmed', hue='Country/Region', marker='o', data=covid_19_country1), 'Confirmed Cases in ' + country3);
+
+covid_19_compare = csv_covid_19[(csv_covid_19['Country/Region']==country1) | (csv_covid_19['Country/Region']==country2) | (csv_covid_19['Country/Region']==country3)]
 covid_19_compare.sort_values(by='ObservationDate').head()
 
 plt.figure(figsize=(20,5))
-plot_graph_confirmed_cases(sbn.lineplot(x='ObservationDate', y='Confirmed', hue='Country/Region', marker='o', data=covid_19_compare), 'Comparision between ' + country1 + ' and ' + country2)
+plot_graph_confirmed_cases(sbn.lineplot(x='ObservationDate', y='Confirmed', hue='Country/Region', marker='o', data=covid_19_compare), 'Comparision between ' + country1 + ', ' + country2 + " and " + country3)
