@@ -12,6 +12,8 @@ import numpy as np
 import seaborn as sbn
 import matplotlib.pyplot as plt
 
+"""## **Input of Countries (*3 Countries*)**"""
+
 csv_covid_19 = pd.read_csv('./covid_19_data.csv')
 csv_covid_19.head()
 country1 = input();
@@ -19,6 +21,16 @@ country2 = input();
 country3 = input();
 
 csv_covid_19.describe()
+
+"""## **Data treatment on Dates**"""
+
+for index, row in csv_covid_19.iterrows():
+  monthDay = row['ObservationDate'][0:5]
+  csv_covid_19.loc[index, 'MonthDay'] = monthDay
+
+csv_covid_19.head()
+
+"""## **Frame structure for each Country selected**"""
 
 covid_19_country1 = csv_covid_19.where(csv_covid_19["Country/Region"]==country1).sort_values(by='ObservationDate')
 covid_19_country1.head()
@@ -29,35 +41,84 @@ covid_19_country2.head()
 covid_19_country3 = csv_covid_19.where(csv_covid_19["Country/Region"]==country3).sort_values(by='ObservationDate')
 covid_19_country3.head()
 
-list_dates = [];
-list_dates = csv_covid_19['ObservationDate']
-list_dates = list_dates.drop_duplicates()
+"""## **Function to plot the graphs**
 
-list_final_date = [];
+Parameters:
 
-for date in list_dates:
-  num = int(date[3:5])
-  list_final_date.append(date[3:5] + '/' + date[0:2])
-  
+
+*   Graph -> seaborn plot;
+*   Title -> String which will be the graph's title
+"""
+
 def plot_graph_confirmed_cases(graph, title):
-  chart = graph;
-  chart.set_xticklabels(list_final_date, rotation=45, horizontalalignment='right');
-  chart.set_ylabel('Confirmed Cases');
-  chart.set_xlabel('Date');
-  chart.grid(1);
-  chart.set_title(title);
+  graph.set_ylabel('Confirmed Cases');
+  graph.set_xlabel('Date');
+  graph.grid(1);
+  graph.set_title(title);
 
-plt.figure(figsize=(20,5))
-plot_graph_confirmed_cases(sbn.lineplot(x='ObservationDate', y='Confirmed', hue='Country/Region', marker='o', data=covid_19_country1), 'Confirmed Cases in ' + country1);
+"""## **Analyzing graph for each country**"""
 
-plt.figure(figsize=(20,5))
-plot_graph_confirmed_cases(sbn.lineplot(x='ObservationDate', y='Confirmed', hue='Country/Region', marker='o', data=covid_19_country2), 'Confirmed Cases in ' + country2)
+plt.figure(figsize=(20,5));
 
-plt.figure(figsize=(20,5))
-plot_graph_confirmed_cases(sbn.lineplot(x='ObservationDate', y='Confirmed', hue='Country/Region', marker='o', data=covid_19_country1), 'Confirmed Cases in ' + country3);
+plot_graph_confirmed_cases(
+    sbn.lineplot(
+      x='MonthDay', 
+      y='Confirmed', 
+      hue='Country/Region', 
+      marker='o', data=covid_19_country1), 
+    'Confirmed Cases in ' + country1);
+
+plt.xticks(
+    rotation=45, 
+    horizontalalignment='right', 
+);
+
+plt.figure(figsize=(20,5));
+
+plot_graph_confirmed_cases(
+    sbn.lineplot(
+      x='MonthDay', 
+      y='Confirmed', 
+      hue='Country/Region', 
+      marker='o', data=covid_19_country2), 
+    'Confirmed Cases in ' + country2);
+
+plt.xticks(
+    rotation=45, 
+    horizontalalignment='right', 
+);
+
+plt.figure(figsize=(20,5));
+
+plot_graph_confirmed_cases(
+    sbn.lineplot(
+      x='MonthDay', 
+      y='Confirmed', 
+      hue='Country/Region', 
+      marker='o', data=covid_19_country3), 
+    'Confirmed Cases in ' + country3);
+
+plt.xticks(
+    rotation=45, 
+    horizontalalignment='right', 
+);
+
+"""# **Comparing Confirmed Cases on each country**"""
 
 covid_19_compare = csv_covid_19[(csv_covid_19['Country/Region']==country1) | (csv_covid_19['Country/Region']==country2) | (csv_covid_19['Country/Region']==country3)]
 covid_19_compare.sort_values(by='ObservationDate').head()
 
-plt.figure(figsize=(20,5))
-plot_graph_confirmed_cases(sbn.lineplot(x='ObservationDate', y='Confirmed', hue='Country/Region', marker='o', data=covid_19_compare), 'Comparision between ' + country1 + ', ' + country2 + " and " + country3)
+plt.figure(figsize=(20,5));
+
+plot_graph_confirmed_cases(
+    sbn.lineplot(
+      x='MonthDay', 
+      y='Confirmed', 
+      hue='Country/Region', 
+      marker='o', data=covid_19_compare), 
+    'Comparision between ' + country1 + ', ' + country2 + " and " + country3);
+
+plt.xticks(
+    rotation=45, 
+    horizontalalignment='right', 
+);

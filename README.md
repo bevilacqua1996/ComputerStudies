@@ -36,9 +36,9 @@ In Latex folder, we store all the reports developed using *Overleaf* platform. T
 
 In this folder you can see some source codes developed in colab notebooks in order to practice Data Analysis using python and some common libraries like **Pandas**, **Numpy**, **seaborn** etc.
 
-One of the tests made until here is a comparision between number of *Covid-19* confirmed cases in Brazil and Latvia.
+One of the tests made until here is a comparision in number of *Covid-19* confirmed cases between three countries (here i suggest to compare the baltic countries).
 You can check some results in the public notebook used to develop these studies. Link of dataset used to develop these studies can be found below too:
 
-[Covid-19 Data Analysis (Brazil and Latvia)](https://colab.research.google.com/drive/1Q1Lw2QAG9CylQ28k2Px7B3YrTXQouAXm)
+[Covid-19 Data Analysis (Comparision between countries)](https://colab.research.google.com/drive/1Q1Lw2QAG9CylQ28k2Px7B3YrTXQouAXm)
 
 [Dataset Novel Corona Virus 2019](https://www.kaggle.com/sudalairajkumar/novel-corona-virus-2019-dataset/tasks?taskId=508)
