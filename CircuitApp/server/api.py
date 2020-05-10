@@ -11,14 +11,17 @@ app = Api(app = flask_app,
 name_space = app.namespace('circuitServer', description='Manage Circuits')
 
 model = app.model('Circuit', 
-		  			{'voltage': fields.Float(required = True, 
+		  			{'peakVoltage': fields.Float(required = True, 
 					description="Voltage Signal of the circuit", 
-					help="Cannot be blank."),
-					'current': fields.Float(required = True, 
-					description="Current Signal of the circuit", 
 					help="Cannot be blank."),
 					'frequency': fields.Float(required = True, 
 					description="Frequency value of the circuit", 
+					help="Cannot be blank."),
+					'resistor': fields.Float(required = True, 
+					description="Resistor component value", 
+					help="Cannot be blank."),
+					'capacitor': fields.Float(required = True, 
+					description="Capacitor component value", 
 					help="Cannot be blank.")})
 
 list_of_circuits = {}
@@ -33,9 +36,10 @@ class MainClass(Resource):
 			circuit = list_of_circuits[id]
 			return {
 				"status": "Circuit retrieved",
-				"voltage" : circuit.voltage,
-				"current" : circuit.current,
-				"frequency" : circuit.frequency
+				"voltage" : circuit.peakVoltage,
+				"frequency" : circuit.frequency,
+				"resistor" : circuit.resistor,
+				"capacitor" : circuit.capacitor
 			}
 		except KeyError as e:
 			name_space.abort(500, e.__doc__, status = "Could not retrieve information", statusCode = "500")
@@ -47,15 +51,17 @@ class MainClass(Resource):
 	@app.expect(model)		
 	def post(self, id):
 		try:
-			voltageInput = request.json['voltage']
-			currentInput = request.json['current']
+			voltageInput = request.json['peakVoltage']
 			frequencyInput = request.json['frequency']
-			list_of_circuits[id] = entity.Circuit(voltageInput, currentInput, frequencyInput)
+			resistorInput = request.json['resistor']
+			capacitorInput = request.json['capacitor']
+			list_of_circuits[id] = entity.Circuit(voltageInput, frequencyInput, resistorInput, capacitorInput)
 			return {
 				"status": "New circuit added",
-				"voltage": list_of_circuits[id].voltage,
-				"current": list_of_circuits[id].current,
-				"frequency": list_of_circuits[id].frequency
+				"voltage": list_of_circuits[id].peakVoltage,
+				"frequency": list_of_circuits[id].frequency,
+				"resistor": list_of_circuits[id].resistor,
+				"capacitor": list_of_circuits[id].capacitor
 			}
 		except KeyError as e:
 			name_space.abort(500, e.__doc__, status = "Could not save information", statusCode = "500")

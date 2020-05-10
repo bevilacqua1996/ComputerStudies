@@ -1,5 +1,6 @@
 class Circuit:
-  def __init__(self, voltage, current, frequency):
-    self.voltage = voltage
-    self.current = current
+  def __init__(self, peakVoltage, frequency, resistor, capacitor):
+    self.peakVoltage = peakVoltage
     self.frequency = frequency
+    self.resistor = resistor
+    self.capacitor = capacitor

@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "outDir": "view/js",
+        "noEmitOnError": true
+    },
+    "include": [
+        "view/ts/**/*"
+    ]
+}
