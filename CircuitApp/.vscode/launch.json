@@ -12,7 +12,7 @@
             "env": {
                 "FLASK_APP": "/home/atc/RTR108/CircuitApp/server/api.py",
                 "FLASK_ENV": "/home/atc/.local/share/virtualenvs/CircuitApp-zJzfuW3B",
-                "FLASK_DEBUG": "0"
+                "FLASK_DEBUG": "1"
             },
             "args": [
                 "run",
