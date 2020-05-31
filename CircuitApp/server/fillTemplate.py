@@ -2,6 +2,9 @@ import os
 
 dir_path = os.path.dirname(os.path.realpath(__name__))
 
+SimulationTemplatePath=dir_path + "/circuitSimulations/circuitTemplates/Simulation.cmd"
+SimulationResultPath=dir_path + "/circuitSimulations/circuitResults/Simulation.cmd"
+
 CRcircuitTemplatePath=dir_path + "/circuitSimulations/circuitTemplates/circuitCR.net"
 CRcircuitResultPath=dir_path + "/circuitSimulations/circuitResults/circuitCR.net"
 
@@ -15,7 +18,7 @@ RLcircuitTemplatePath=dir_path + "/circuitSimulations/circuitTemplates/circuitRL
 RLcircuitResultPath=dir_path + "/circuitSimulations/circuitResults/circuitRL.net"
 
 class CRcircuit:
-    def __init__(self, peakVoltage, frequency, resistor, capacitor):
+    def __init__(self, peakVoltage, frequency, resistor, capacitor, initialTime, finalTime):
         #input file
         fin = open(CRcircuitTemplatePath, "rt")
         #output file to write the result to
@@ -35,8 +38,23 @@ class CRcircuit:
         fin.close()
         fout.close()
 
+        #input file
+        fin = open(SimulationTemplatePath, "rt")
+        #output file to write the result to
+        fout = open(SimulationResultPath, "wt")
+        #for each line in the input file
+        for line in fin:
+            #read replace the string and write to output file
+            if '{initialTime}' in line:
+                fout.write(line.replace('{initialTime}', initialTime).replace('{finalTime}', finalTime))
+            else:
+                fout.write(line)
+        #close input and output files
+        fin.close()
+        fout.close()
+
 class RCcircuit:
-    def __init__(self, peakVoltage, frequency, resistor, capacitor):
+    def __init__(self, peakVoltage, frequency, resistor, capacitor, initialTime, finalTime):
         #input file
         fin = open(RCcircuitTemplatePath, "rt")
         #output file to write the result to
@@ -56,8 +74,23 @@ class RCcircuit:
         fin.close()
         fout.close()
 
+        #input file
+        fin = open(SimulationTemplatePath, "rt")
+        #output file to write the result to
+        fout = open(SimulationResultPath, "wt")
+        #for each line in the input file
+        for line in fin:
+            #read replace the string and write to output file
+            if '{initialTime}' in line:
+                fout.write(line.replace('{initialTime}', initialTime).replace('{finalTime}', finalTime))
+            else:
+                fout.write(line)
+        #close input and output files
+        fin.close()
+        fout.close()
+
 class LRcircuit:
-    def __init__(self, peakVoltage, frequency, resistor, inductor):
+    def __init__(self, peakVoltage, frequency, resistor, inductor, initialTime, finalTime):
         #input file
         fin = open(LRcircuitTemplatePath, "rt")
         #output file to write the result to
@@ -77,8 +110,23 @@ class LRcircuit:
         fin.close()
         fout.close()
 
+        #input file
+        fin = open(SimulationTemplatePath, "rt")
+        #output file to write the result to
+        fout = open(SimulationResultPath, "wt")
+        #for each line in the input file
+        for line in fin:
+            #read replace the string and write to output file
+            if '{initialTime}' in line:
+                fout.write(line.replace('{initialTime}', initialTime).replace('{finalTime}', finalTime))
+            else:
+                fout.write(line)
+        #close input and output files
+        fin.close()
+        fout.close()
+
 class RLcircuit:
-    def __init__(self, peakVoltage, frequency, resistor, inductor):
+    def __init__(self, peakVoltage, frequency, resistor, inductor, initialTime, finalTime):
         #input file
         fin = open(RLcircuitTemplatePath, "rt")
         #output file to write the result to
@@ -92,6 +140,21 @@ class RLcircuit:
                 fout.write(line.replace('{resistorValue}', resistor))
             elif '{voltageValue}' in line:
                 fout.write(line.replace('{voltageValue}', peakVoltage).replace('{frequencyValue}', frequency))
+            else:
+                fout.write(line)
+        #close input and output files
+        fin.close()
+        fout.close()
+
+        #input file
+        fin = open(SimulationTemplatePath, "rt")
+        #output file to write the result to
+        fout = open(SimulationResultPath, "wt")
+        #for each line in the input file
+        for line in fin:
+            #read replace the string and write to output file
+            if '{initialTime}' in line:
+                fout.write(line.replace('{initialTime}', initialTime).replace('{finalTime}', finalTime))
             else:
                 fout.write(line)
         #close input and output files

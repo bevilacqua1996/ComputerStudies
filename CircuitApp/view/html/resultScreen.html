@@ -10,32 +10,34 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/general.css">
-    <script src="../js/inputScreen.js"></script>
+    <script src="../js/resultScreen.js"></script>
 </head>
 
-<body onload="createBodyTemplate()">
+<body onload="buildResults()">
     <nav id="navbar" class="navbar navbar-light">
         <a class="navbar-brand">
             <h3 class="text-uppercase font-weight-bold">Frequency Filter Calculator</h3>
         </a>
-        <button class="btn btn-light my-2 my-sm-0" type="submit" onclick="goToMainPage()">Back</button>
+        <button class="btn btn-light my-2 my-sm-0" type="submit" onclick="goToInputScreenPage()">Back</button>
     </nav>
-    <br></br>
-    <div id="title">
-        <!-- Title creation -->
-    </div>
-    <br></br>
-    <div id="circuitFields" class="container">
-        <!-- Circuit image and fields construction -->
-    </div>
-    <br></br>
-    <div id="circuitButton" class="container">
-        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="sendToServer()">Send to Server</button>
-    </div>
     <br></br>
     <div id="feedBackMessages" class="container">
         <!-- Loading Message -->
     </div>
+    <div id="reloadButton" class="container">
+        <!-- Reload Button -->
+    </div>
+    <div class="col-sm">
+        <div id="title">
+            <!-- Title creation -->
+        </div>
+        <div class="text-center">
+            <div id="graphResult" class="container">
+                <!-- Graph results -->
+            </div>
+        </div>
+    </div>
+    <br></br>
     <!-- Footer -->
     <footer id="footer" class="page-footer font-small">
 
