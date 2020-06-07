@@ -42,3 +42,16 @@ You can check some results in the public notebook used to develop these studies.
 [Covid-19 Data Analysis (Comparision between countries)](https://colab.research.google.com/drive/1Q1Lw2QAG9CylQ28k2Px7B3YrTXQouAXm)
 
 [Dataset Novel Corona Virus 2019](https://www.kaggle.com/sudalairajkumar/novel-corona-virus-2019-dataset/tasks?taskId=508)
+
+### Circuit App
+
+This folder you can find the structure and documentation about a Circuit Simulator App where user can choose between four type of High and Low-Pass Filters:
+
+- Circuit RC;
+- Circuit CR;
+- Circuit RL;
+- Circuit LR.
+
+Circuits will be simulated by a server developed with framework _Flask_ (Python) integrated with _Ngspice_. Besides, user will have access to a simple
+and usual interface which makes the process of write component values easier.
+
