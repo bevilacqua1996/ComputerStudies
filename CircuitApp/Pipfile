@@ -8,7 +8,7 @@ verify_ssl = true
 [packages]
 flask = "*"
 flask-restplus = "*"
-werkzeug = "==0.16.1"
+werkzeug = "==3.0.1"
 
 [requires]
 python_version = "3.8"
